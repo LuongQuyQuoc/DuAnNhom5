@@ -100,3 +100,69 @@ class Employee{
 				this.Salary+ " "+ this.getSalary());
 	}
 }
+class EmpList{
+	private OutputStreamWriter fw;
+	void input(Employee[] emp) {
+		for(int i= 0; i<emp.length; i++) {
+			emp[i]= new Employee();
+			emp[i].input();
+		}
+	}
+	void output(Employee[] emp) {
+		for(int i= 0; i<emp.length; i++) {
+			emp[i].output();
+		}
+	}
+	void SortEmpList(Employee[] emp) throws IOException{
+		File f= new File("D:\\test.txt");
+		FileWriter fw= new FileWriter(f);
+		Employee tpm= null;
+		for(int i= 0; i< emp.length- 1; i++) {
+			for(int j= i+1; j< emp.length; i++) {
+				if(emp[i].Salary> emp[j].Salary) {
+					tpm= emp[i];
+					emp[i]= emp[j];
+					emp[j]= tpm;
+				}
+			}
+		}
+		try {
+			for(int i= 0; i< emp.length; i++) 
+				fw.write(emp[i].Id+ " "+ emp[i].Name+ " "+ emp[i].Address+ " "+ emp[i].Tel+ " "+ emp[i].NumOfDate+ ""+ emp[i].Salary+ "\n");
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fw.close();
+	}
+	void MaxSalaryToFile(Employee[] emp) throws IOException{
+		File f= new File("D:\\test.txt");
+		FileWriter tw= new FileWriter(f, true);
+		float max= emp[0].Salary;
+		int k= 0;
+		for(int i= 0; i<emp.length; i++) {
+			if(max< emp[i].Salary) {
+				max= emp[i].Salary;
+				k= 1;
+			}
+		}
+		try {
+			fw.write("Max Salary: "+ emp[k].Salary+ "\n");
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fw.close();
+	}
+	void SumSalaryToFile(Employee[] emp) throws IOException{
+		File f= new File("D:\\test.txt");
+		FileWriter tw= new FileWriter(f, true);
+		float sum= 0;
+		for(int i= 0; i< emp.length; i++) {
+			sum+= emp[i].Salary;
+		}
+		try {
+			fw.write("Sum Of Salary: "+ sum+ "\n");
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fw.close();
+	}
