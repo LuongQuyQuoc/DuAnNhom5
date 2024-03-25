@@ -166,3 +166,31 @@ class EmpList{
 		}
 		fw.close();
 	}
+		void outputFromFile(Employee[] emp) throws IOException{
+		FileReader fr= new FileReader("D:\\test.txt");
+		BufferedReader br= new BufferedReader(fr);
+		String str= null;
+		try {
+			while((str= br.readLine()) !=null) {
+				System.out.println(str);
+			}
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		fr.close();
+		br.close();
+	}
+}
+public class Main {
+	public static void main(String[] args) throws IOException {
+		Employee[] emp= new Employee[3];
+		EmpList List= new EmpList();
+		List.input(emp);
+		List.output(emp);
+		List.SortEmpList(emp);
+		List.outputFromFile(emp);
+		List.MaxSalaryToFile(emp);
+		List.SumSalaryToFile(emp);
+	}
+
+}
