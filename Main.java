@@ -70,3 +70,33 @@ class Employee{
 		// TODO Auto-generated constructor stub
 	}
 	
+	void input() {
+		Scanner objSc= new Scanner(System.in);
+		System.out.print("Id: ");
+		this.setId(objSc.nextInt());
+		
+		System.out.print("Name: ");
+		this.setName(objSc.nextLine());
+		
+		System.out.print("Address: ");
+		this.setAddress(objSc.nextLine());
+		
+		System.out.print("Tel: ");
+		this.setTel(objSc.nextLine());
+		
+		System.out.print("NumOfDate: ");
+		this.setNumOfDate(objSc.nextInt());
+		
+		System.out.print("Salary: ");
+		this.setSalary(objSc.nextInt());
+	}
+	
+	void output() {
+		System.out.println(this.Id+ " "+ this.getId()+ " "+ 
+				this.Name+ " "+ this.getName()+ " "+
+				this.Address+ " "+ this.getAddress()+ " "+ 
+				this.Tel+ " "+ this.getTel()+ " "+ 
+				this.NumOfDate+ " "+ this.getNumOfDate()+ " "+ 
+				this.Salary+ " "+ this.getSalary());
+	}
+}
